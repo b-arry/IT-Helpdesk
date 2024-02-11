@@ -1,0 +1,231 @@
+
+.ticket-outer {
+    display: block;
+    width: 100%;
+    background: url(/img/image-bg.png)no-repeat;
+    background-size: cover;
+}
+.navbar-outer {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: right;
+    padding: 0 10px;
+    box-sizing: border-box;
+    background: #000;
+	text-transform: capitalize;
+}
+.container-fluid{
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    justify-content: center;
+    width: 100%;
+    min-height: 80vh;
+    max-width: 960px;
+    padding: 15px 25px;
+}  
+.heading {
+    padding: 20px;
+    font-size: 42px;
+    line-height: 56px;
+    text-transform: capitalize;
+    font-weight: 700;
+	position: relative;
+}
+.heading:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 110px;
+    height: 2px;
+    background: #000;
+    bottom: 0;
+    transform: translate(-50%, 0);
+}
+
+.ticket-btn:hover{
+    color: black;
+    box-shadow: 0 0.5em 0.5em -0.4em;
+    transform: translateY(-0.25em);
+}
+
+.ticket-form {
+    background-color: #fff;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 15px;
+    padding: 30px;
+}
+.ticket-form .form-cat-selection{
+	display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+}
+.ticket-form .form-cat-selection .Category-outer{
+	display:inline-block;
+	width: 49%;
+}
+.ticket-form .form-cat-selection .Category-outer .form-select:focus {
+    border-color: #dee2e6;
+    outline: 0;
+    box-shadow: none;
+}
+  
+.ticket-form input[type=text],.ticket-form input[type=email]{
+	width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 400;
+	text-transform: none;
+    color: #212529;
+	border: 1px solid #dee2e6;
+	border-radius: 5px;
+}
+.ticket-form textarea{
+	width: 100%;
+    resize: none;
+	padding: 10px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #212529;
+	border: 1px solid #dee2e6;
+	border-radius: 5px;
+	
+}
+.text-label {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+	margin-bottom: 5px;
+    text-transform: capitalize;
+}
+.Cat_label{
+	font-size: 15px;
+	font-weight: 500;
+	margin: 10px 5px 0;
+}
+.ticket-form  .ticket-btn{
+	display: block;
+	width: 100%;
+	padding: 10px;
+	background:#000;
+	color:#fff;
+	font-size: 15px;
+	font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+}
+.ticket-inner{
+	padding: 50px 0 50px;
+}
+.navbar-outer {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+.navbar-outer li a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+  
+.navbar-outer li a:hover:not(.active) {
+    transform: translateY(0.25em);
+    background: #fff;
+    color: #000;
+}
+footer{
+	padding: 15px 0;	
+	display: block;
+	width:100%;
+	background:#000;
+	
+}
+footer .copyright {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    font-weight: 500;
+    font-size: 15px;
+}
+/*signin form*/
+.form-outer .form-check-input:checked {
+    background-color: #000;
+    border-color: #000;
+}
+.form-outer .nav-link{
+ color: #000;
+}
+.form-outer .nav-link.active{
+    background-color: #000!important;
+    border-color: #000;
+}
+.form-outer .sign-btn {
+    border-color: #000;
+}
+.form-outer .sign-btn:hover{
+    background-color: #000;
+	 border-color: #000;
+}
+.form-outer .form-control:focus {
+    box-shadow: none;
+}
+/*faq*/
+
+.faq-outer .faq-description{
+	text-align:center;
+	padding: 0 10px;
+}
+.faq-outer .faq-inner{
+	display:block;
+	margin: 0 0 30px;
+}
+.faq-outer .faq-payment h2{font-size: 25px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+.faq-outer .faq-payment {
+    display: block;
+    padding: 10px 0;
+}
+.faq-outer .faq-payment .accordion-header{
+margin: 0;
+}
+.faq-outer .faq-payment .accordion-button{
+	font-size: 15px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.rise-ticket-option{
+	    display: block;
+    text-align: center;
+}
+
+.faq-outer .faq-payment .accordion-button:focus{
+box-shadow: none;
+}
+/*image-animation*/
+.ticket-outer .ticket_img .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+

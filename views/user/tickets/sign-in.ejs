@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Helpdesk Solution</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      .password-input-container {
+        position: relative;
+      }
+
+      .password-input-container input[type="password"] {
+        padding-right: 40px; /* Adjust the value as needed to make space for the icon */
+      }
+
+      .password-input-container #showPassword {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul class="navbar-outer">
+      <li><a href="/">Raise a ticket</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <% if (user) { %>
+        <li><a href="/user-dashboard">My Tickets</a></li>
+          <li><a href="/logout">Log out</a></li>
+        <% } else { %>
+          <li><a href="/sign-in">Log in</a></li>
+        <% } %>
+    </ul>
+    <section id="title" class="ticket-outer" class="gradient-background">
+      <h1 class="heading text-center">Welcome Back</h1>
+      <div class="container col-xxl-8">
+        <div class="row align-items-center flex-lg-row-reverse ticket-inner">
+          <div class="col-12 col-md-6 col-lg-6 col-sm-12 form-outer">
+            <!-- Pills navs -->
+            <ul
+              class="nav nav-pills nav-justified mb-3"
+              id="ex1"
+              role="tablist"
+            >
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link active"
+                  id="tab-login"
+                  data-bs-toggle="pill"
+                  href="#pills-login"
+                  role="tab"
+                  aria-controls="pills-login"
+                  aria-selected="true"
+                  >Login</a
+                >
+              </li>
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link"
+                  id="tab-register"
+                  data-bs-toggle="pill"
+                  href="#pills-register"
+                  role="tab"
+                  aria-controls="pills-register"
+                  aria-selected="false"
+                  aria-disabled="true"
+                  >Register</a
+                >
+              </li>
+            </ul>
+            <!-- Pills navs -->
+
+            <!-- Pills content -->
+            <div class="tab-content">
+              <div
+                class="tab-pane fade show active"
+                id="pills-login"
+                role="tabpanel"
+                aria-labelledby="tab-login"
+              >
+                <form class="ticket-form" id="user-login-form">
+                  <!-- Email input -->
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-outline mb-4">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="loginRole"
+                          value="user"
+                          id="loginUser"
+                          checked
+                        />
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          User
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline mb-4">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="loginRole"
+                          value="employee"
+                          id="loginEmployee"
+                        />
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          Employee
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label
+                      class="form-label"
+                      for="loginName"
+                      id="login-form-label"
+                      >Email</label
+                    >
+                    <input
+                      type="text"
+                      id="loginName"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="loginPassword"
+                      >Password</label
+                    >
+                    <div class="password-input-container">
+                      <input
+                        type="password"
+                        id="loginPassword"
+                        class="form-control"
+                        required
+                      />
+                      <i class="fa fa-eye-slash" id="showPassword"></i>
+                    </div>
+                  </div>
+
+                  <!-- 2 column grid layout -->
+                  <div class="row mb-4">
+                    <div class="col-md-6 d-flex justify-content-center">
+                      <!-- Checkbox -->
+                      <div class="form-check mb-3 mb-md-0">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value=""
+                          id="loginCheck"
+                          checked
+                        />
+                        <label class="form-check-label" for="loginCheck">
+                          Remember me
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 d-flex justify-content-center">
+                      <!-- Simple link -->
+                      <a href="/forget-password">Forgot password?</a>
+                    </div>
+                  </div>
+
+                  <!-- Submit button -->
+                  <button
+                    type="submit"
+                    id="login-btn"
+                    class="ticket-btn sign-btn btn btn-primary btn-block mb-4"
+                  >
+                    Log in
+                  </button>
+                </form>
+              </div>
+
+              <div
+                class="tab-pane fade"
+                id="pills-register"
+                role="tabpanel"
+                aria-labelledby="tab-register"
+              >
+                <form class="ticket-form" id="user-register-form">
+                  <!-- Default checked radio -->
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-outline mb-4">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="role"
+                          value="user"
+                          id="user"
+                          checked
+                          value="user"
+                        />
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          Raise Complain
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline mb-4">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="role"
+                          value="employee"
+                          id="employee"
+                          value="employee"
+                        />
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          Employee
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Name input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="registerName">Name</label>
+                    <input
+                      type="text"
+                      id="registerName"
+                      name="name"
+                      class="form-control"
+                    />
+                  </div>
+
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="registerEmail">Email</label>
+                    <input
+                      type="email"
+                      id="registerEmail"
+                      name="email"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="user-section">
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="registerPassword"
+                        >Password</label
+                      >
+                      <input
+                        type="password"
+                        id="registerPassword"
+                        name="password"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <!-- Repeat Password input -->
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="registerRepeatPassword"
+                        >Repeat password</label
+                      >
+                      <input
+                        type="password"
+                        id="registerRepeatPassword"
+                        name="registerRepeatPassword"
+                        class="form-control"
+      
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="form-outline mb-4"
+                    id="department-div"
+                    style="display: none"
+                  >
+                    <label class="form-label">Department</label>
+                    <select
+                      class="form-select"
+                      id="registerDepartment"
+                      name="department"
+                      aria-label="Default select example"
+                      required
+                    >
+                      <option selected>--department--</option>
+                      <option value="payment">Payment</option>
+                      <option value="order">Order</option>
+                      <option value="services">Services</option>
+                      <option value="quality issues">Quality issue</option>
+                    </select>
+                  </div>
+                  <p id="note" style="display: none">
+                    Note: You will receive employee Id and password on email to
+                    login
+                  </p>
+
+                  <!-- Checkbox -->
+                  <div class="form-check d-flex justify-content-center mb-4">
+                    <input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      value=""
+                      id="registerCheck"
+                      checked
+                      aria-describedby="registerCheckHelpText"
+                    />
+                    <label class="form-check-label" for="registerCheck">
+                      I have read and agree to the terms
+                    </label>
+                  </div>
+
+                  <!-- Submit button -->
+                  <button
+                    type="submit"
+                    id="register-btn"
+                    class="ticket-btn sign-btn btn btn-primary btn-block mb-3"
+                  >
+                    Sign in
+                  </button>
+                </form>
+              </div>
+            </div>
+            <!-- Pills content -->
+          </div>
+          <div class="col-12 col-md-6 col-lg-6 col-sm-12 ticket_img">
+            <img
+              src="/img/sign-in.png"
+              class="d-block mx-lg-auto img-fluid animated"
+              alt="Bootstrap Themes"
+              height="200"
+              loading="lazy"
+            />
+            <br />
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p class="copyright">Copyright &#169; 2023</p>
+    </footer>
+  </body>
+  <script>
+    const passwordInput = document.getElementById('loginPassword');
+    const registerPasswordInput = document.getElementById('registerPassword');
+const showPasswordIcon = document.getElementById('showPassword');
+
+showPasswordIcon.addEventListener('click', function() {
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    showPasswordIcon.classList.remove('fa-eye-slash');
+    showPasswordIcon.classList.add('fa-eye');
+  } else {
+    passwordInput.type = 'password';
+    showPasswordIcon.classList.remove('fa-eye');
+    showPasswordIcon.classList.add('fa-eye-slash');
+  }
+});
+
+  </script>
+
+  <script>
+    let loginRole = document.getElementsByName("loginRole");
+    let loginLabel = document.getElementById("login-form-label");
+
+    loginRole.forEach((item) => {
+      item.addEventListener("click", () => {
+        if (item.value == "user") {
+          loginLabel.innerHTML = "Email";
+        } else {
+          loginLabel.innerHTML = "Employee ID";
+        }
+      });
+    });
+
+    let role = document.getElementsByName("role");
+    let userSection = document.querySelector(".user-section");
+    let note = document.getElementById("note");
+    let departmentDiv = document.getElementById("department-div");
+
+    role.forEach((item) => {
+      item.addEventListener("click", () => {
+        if (item.value == "user") {
+          userSection.style.display = "block";
+          note.style.display = "none";
+          departmentDiv.style.display = "none";
+        } else {
+          userSection.style.display = "none";
+          note.style.display = "block";
+          departmentDiv.style.display = "block";
+        }
+      });
+    });
+  </script>
+  <script src="js/bootstrap.bundle.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/userRegisterForm.js"></script>
+  <script src="js/userLoginForm.js"></script>
+</html>

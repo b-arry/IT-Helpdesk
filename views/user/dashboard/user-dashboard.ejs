@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        IT Helpdesk Solution
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/media.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+</head>
+
+<body>
+    <ul class="navbar-outer">
+        <li><a href="/">Raise a ticket</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <% if (user) { %>
+            <li><a href="/user-dashboard">My Tickets</a></li>
+          <li><a href="/logout">Log out</a></li>
+        <% } else { %>
+          <li><a href="/sign-in">Log in</a></li>
+        <% } %>
+    </ul>
+
+
+    <section id="title" class="p-5">
+        <h1>Tickets</h1>
+        <p>You will see all the tickets submitted by you and you can check their updated status as well.</p>
+        <div class="row">
+            <div class="col-12">
+                  <div class="table-responsive p-0">
+                    <table
+                      class="table align-items-center mb-0"
+                      id="ticket-table"
+                    >
+                      <thead>
+                        <tr>
+                         
+                          <th
+                            class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2"
+                          >
+                            Category
+                          </th>
+                          <th
+                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                          >
+                            Status
+                          </th>
+                          <th
+                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                          >
+                            Priority
+                          </th>
+                          <th
+                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                          >
+                            Created
+                          </th>
+                         
+                          <th
+                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                          >
+                            Last Updated At
+                          </th>
+                          <th
+                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                          >
+                            Last Closed At
+                          </th>
+                        
+                          <th class="text-secondary opacity-7"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% if (tickets.length > 0) { %> <% for (var i = 0; i <
+                        tickets.length; i++) { %>
+                        <tr>
+                          <td>
+                            <p class="text-xs font-weight-bold mb-0">
+                              <%= tickets[i].category %>
+                            </p>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                          
+                          <%= tickets[i].status %>
+                         
+                       
+                          
+                       
+                          </td>
+                          <td class="align-middle text-center">
+                       <%= tickets[i].priority %>
+                          </td>
+                          <td class="align-middle text-center">
+                            <% if (tickets[i].createdAt) { %>
+                            <span class="text-secondary text-xs font-weight-bold"
+                              ><% const createdAt = new
+                              Date(tickets[i].createdAt); %> <%=
+                              createdAt.toLocaleString() %></span
+                            >
+                            <% } else { %> N/A <% } %>
+                          </td>
+                          
+                          <td class="align-middle text-center">
+                            <% if (tickets[i].updatedAt) { %>
+                            <span class="text-secondary text-xs font-weight-bold"
+                              ><% const updatedAt = new
+                              Date(tickets[i].updatedAt); %> <%=
+                              updatedAt.toLocaleString() %></span
+                            >
+                            <% } else { %> N/A <% } %>
+                          </td>
+                          <td class="align-middle text-center">
+                            <% if (tickets[i].closedAt) { %>
+                            <span class="text-secondary text-xs font-weight-bold"
+                              ><% const closedAt = new Date(tickets[i].closedAt);
+                              %> <%= closedAt.toLocaleString() %></span
+                            >
+                            <% } else { %> N/A <% } %>
+                          </td>
+                        </tr>
+                        <% } %> <% } else { %>
+                        <tr>
+                          <td colspan="7" class="text-center">
+                            <h3>No tickets found</h3>
+                          </td>
+                        </tr>
+                        <% } %>
+                      </tbody>
+                    </table>
+                  </div>
+           
+             
+            </div>
+          </div>
+       
+    </section>
+
+
+    <footer>
+        <p class="copyright">Copyright &#169; 2023</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/formSubmission.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+        crossorigin="anonymous"></script>    
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        crossorigin="anonymous"></script>
+
+
+
+
+
+</body>
+
+</html>

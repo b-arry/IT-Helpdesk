@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Helpdesk Solution</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+    <ul class="navbar-outer">
+      <li><a href="/">Raise a ticket</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <% if (user) { %>
+        <li><a href="/user-dashboard">My Tickets</a></li>
+          <li><a href="/logout">Log out</a></li>
+        <% } else { %>
+          <li><a href="/sign-in">Log in</a></li>
+        <% } %>
+    </ul>
+
+    <section id="title" class="ticket-outer" class="gradient-background">
+      <h1 class="heading text-center">Fill the form to submit your query</h1>
+      <div class="container col-xxl-8">
+        <div class="row align-items-center flex-lg-row-reverse ticket-inner">
+          <div class="col-12 col-md-6 col-lg-6 col-sm-12">
+            <form id="ticket-submit-form" class="ticket-form">
+              <div>
+                <div>
+                  <label class="text-label">Name</label>
+                  <input type="text" id="first" name="firstname" required />
+                </div>
+                <br />
+                <div>
+                  <label class="text-label">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    width="100%"
+                    required
+                  />
+                </div>
+                <br />
+                <div class="form-cat-selection">
+                  <!-- <label class="text-label">Category</label> -->
+                  <!-- <input type="radio" name="gender" id="male" value="male"> -->
+                  <!-- <label class="Cat_label" for="male">Product</label> -->
+                  <!-- <input type="radio" name="gender" id="female" value="female"> -->
+                  <!-- <label class="Cat_label" for="female">Service</label> -->
+                  <!-- <input type="radio" name="gender" id="other" value="other"> -->
+                  <!-- <label class="Cat_label" for="other">Marketing</label> -->
+                  <div class="Category-outer">
+                    <label class="text-label">Category</label>
+                    <select
+                      class="form-select"
+                      id="category"
+                      name="category"
+                      aria-label="Default select example"
+                      required
+                    >
+                      <option selected>--category--</option>
+                      <option value="payment">Payment</option>
+                      <option value="order">Order</option>
+                      <option value="services">Services</option>
+                      <option value="quality issues">Quality issue</option>
+                    </select>
+                  </div>
+                  <div class="Category-outer priority-outer">
+                    <label class="text-label">priority</label>
+                    <select
+                      name="priority"
+                      required
+                      id="priority"
+                      class="form-select form-select2"
+                      aria-label="Default select example"
+                    >
+                      <option selected>--priority--</option>
+                      <option value="low">lowest</option>
+                      <option value="medium">medium</option>
+                      <option value="high">highest</option>
+                    </select>
+                  </div>
+                </div>
+                <br />
+                <div>
+                  <label class="text-label">type your message</label>
+                  <textarea
+                    required
+                    name="message"
+                    id="message"
+                    name="msg"
+                    rows="4"
+                    cols="50"
+                  ></textarea>
+                </div>
+                <br />
+                <button
+                  type="submit"
+                  id="submit-button"
+                  class="ticket-btn btn btn-outline-dark btn-sm"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-12 col-md-6 col-lg-6 col-sm-12 ticket_img">
+            <img
+              src="/img/main.png"
+              class="d-block mx-lg-auto img-fluid animated"
+              alt="Bootstrap Themes"
+              height="200"
+              loading="lazy"
+            />
+            <br />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p class="copyright">Copyright &#169; 2023</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/formSubmission.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+      integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
